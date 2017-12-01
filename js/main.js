@@ -1,28 +1,14 @@
-var headTailsMapping = {
-    0: "Head",
-    1: "Tails"
+var randomInt = function (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+var headOrTails = function () {
+    return randomInt(0, 1) ? "Tails" : "Head";
+};
 
 $(function() {
     $("#generate").click( function () {
-        var headTails = headTailsMapping[Math.round(Math.random())];
-        var numbers = [];
-        var number = 0;
-
-        $("#head-tails").val(headTails);
-
-        while (numbers.length < 5) {
-            number = Math.floor(Math.random()*20) + 1;
-
-            if (numbers.indexOf(number) === -1) {
-                numbers.push(number);
-            }
-        }
-
-        $("#number").val(numbers.join());
+        $("#head-tails").val(headOrTails());
+        $("#number").val(randomInt(1, 20));
     })
 });
-
-
-
